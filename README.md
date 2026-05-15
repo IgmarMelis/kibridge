@@ -2,9 +2,17 @@
 
 # KiBridge &nbsp;&middot;&nbsp; KiRouter
 
-If KiBridge helps your KiCad workflow, consider supporting the project on Ko-fi:
+<p align="center">
+  <strong>☕ Support KiBridge development</strong>
+</p>
 
-[Support me on Ko-fi](https://ko-fi.com/pss)
+<p align="center">
+  If KiBridge helps your KiCad workflow, consider supporting the project on Ko-fi.
+</p>
+
+<p align="center">
+  <a href="https://ko-fi.com/pss"><strong>➡️ Support me on Ko-fi</strong></a>
+</p>
 
 **Open-source AI-assisted PCB tooling for KiCad 10.**
 A KiCad plugin and a companion local web-app autorouter — bridged over `localhost`.
