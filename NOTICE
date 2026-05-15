@@ -1,0 +1,19 @@
+KiBridge & KiRouter
+Copyright 2026 Igmar Melis / PSS Tools
+
+This product includes software developed by Igmar Melis and PSS Tools
+(https://github.com/IgmarMelis/kibridge).
+
+Third-party components used:
+
+  Freerouting (https://github.com/freerouting/freerouting)
+    Used as a subprocess (not modified, not statically linked).
+    Licensed under GNU GPL v3.0.
+
+  KiCad (https://www.kicad.org)
+    Plugin runs inside KiCad's pcbnew Python environment.
+    KiCad is licensed under GNU GPL v3.0.
+
+  Flask (https://flask.palletsprojects.com)
+    Web framework for the KiRouter HTTP server.
+    Licensed under BSD-3-Clause.

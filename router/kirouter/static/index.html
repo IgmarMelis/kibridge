@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KiRouter — KiCad autorouter</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">▣</span>
+      <span class="brand-name">KiRouter</span>
+      <span class="brand-tag">by PSS Tools</span>
+    </div>
+
+    <div class="layer-toggles">
+      <label><input type="checkbox" data-layer="F.Cu"   checked> F.Cu</label>
+      <label><input type="checkbox" data-layer="B.Cu"   checked> B.Cu</label>
+      <label><input type="checkbox" data-layer="F.SilkS" checked> F.SilkS</label>
+      <label><input type="checkbox" data-layer="B.SilkS"        > B.SilkS</label>
+    </div>
+
+    <div class="toolbar">
+      <button id="btn-fit"        class="btn">Fit</button>
+      <button id="btn-zoom-in"    class="btn">+</button>
+      <button id="btn-zoom-out"   class="btn">−</button>
+      <button id="btn-load-sample" class="btn">Load Sample</button>
+      <button id="btn-clear"       class="btn btn-warn">Clear</button>
+      <button id="btn-route"       class="btn btn-primary">Auto-route</button>
+      <button id="btn-drc"         class="btn">Run DRC</button>
+      <button id="btn-send-kicad"  class="btn"
+              title="Show instructions to import this route in KiCad">Send to KiCad</button>
+    </div>
+
+    <div class="server-status">
+      <span id="srv-light" class="srv-light"></span>
+      <span id="srv-text">connecting...</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="canvas-wrap">
+      <canvas id="board"></canvas>
+      <div id="canvas-overlay" class="empty-state">
+        <h2>No board loaded</h2>
+        <p>Click <strong>Load Sample</strong> to see a demo, or push a board from KiCad
+           with <em>KiBridge: Send to KiRouter</em>.</p>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <h3>Board</h3>
+        <dl id="board-meta">
+          <dt>Footprints</dt><dd id="meta-fp">—</dd>
+          <dt>Tracks</dt>    <dd id="meta-tr">—</dd>
+          <dt>Vias</dt>      <dd id="meta-via">—</dd>
+          <dt>Nets</dt>      <dd id="meta-net">—</dd>
+          <dt>Source</dt>    <dd id="meta-src">—</dd>
+        </dl>
+      </section>
+
+      <section class="panel" id="panel-route">
+        <h3>Routing</h3>
+        <div id="route-idle" class="muted small">Press <strong>Auto-route</strong> to start.</div>
+        <div id="route-running" class="hidden">
+          <div class="route-progress">
+            <div id="route-bar" class="route-bar"></div>
+          </div>
+          <div class="route-info">
+            <span id="route-engine">freerouting</span>
+            <span id="route-pct">0%</span>
+          </div>
+          <pre id="route-log" class="route-log"></pre>
+        </div>
+        <div id="route-done" class="hidden">
+          <div class="route-summary"></div>
+          <div class="route-actions">
+            <button id="btn-accept" class="btn btn-primary">Accept routes</button>
+            <button id="btn-reject" class="btn">Discard</button>
+          </div>
+        </div>
+        <div id="route-error" class="hidden route-error"></div>
+      </section>
+
+      <section class="panel" id="panel-drc">
+        <h3>DRC</h3>
+        <div id="drc-summary" class="muted small">Not yet run.</div>
+        <ul id="drc-list" class="drc-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h3>Nets</h3>
+        <ul id="net-list" class="net-list">
+          <li class="muted">No nets to show.</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3>Design rules</h3>
+        <dl id="rules-list" class="rules-list">
+          <dt>—</dt><dd>load a board</dd>
+        </dl>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="statusbar">
+    <span id="cursor-mm">x: —, y: —</span>
+    <span id="zoom-level">zoom: 100%</span>
+    <span id="status-msg" class="grow">ready</span>
+    <span class="version">v1.0.6</span>
+  </footer>
+
+  <script src="/static/canvas.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

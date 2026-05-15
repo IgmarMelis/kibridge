@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "report_ref": "snapshot/board_inspect.json",
+  "summary": "Annotate dangerously thin power traces; widen 5V/3.3V/GND tracks; suggest GND stitching near MAX485.",
+  "confirm_changes": true,
+  "actions": [
+    {
+      "op": "add_silkscreen_note",
+      "text": "KB: 5V was 0.2mm - widen to 0.6mm",
+      "x_mm": 30.0,
+      "y_mm": 10.0,
+      "layer": "F.SilkS",
+      "size_mm": 1.0
+    },
+    {
+      "op": "highlight_net",
+      "net": "5V"
+    },
+    {
+      "op": "set_track_widths_for_net",
+      "net_name": "5V",
+      "width_mm": 0.6
+    },
+    {
+      "op": "set_track_widths_for_net",
+      "net_name": "3.3v",
+      "width_mm": 0.4
+    },
+    {
+      "op": "set_track_widths_for_net",
+      "net_name": "GND",
+      "width_mm": 0.5
+    },
+    {
+      "op": "add_user_marker",
+      "x_mm": 85.0,
+      "y_mm": 45.0,
+      "radius_mm": 1.5,
+      "note": "Add GND stitching near MAX485"
+    }
+  ],
+  "notes": [
+    "Net classes were never set; everything was routed at 0.2mm. Configure Default=0.25, Power=0.6 in Board Setup -> Net Classes.",
+    "RX/TX/RST nets have only 1 pad each in the schematic - confirm a header is intentionally not placed.",
+    "GND has 5 vias for 72 pads. With one zone fill, that's relying on the pour for return paths; add stitching vias near high-speed signals."
+  ]
+}
