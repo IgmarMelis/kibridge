@@ -70,7 +70,7 @@ C:\Users\<you>\Documents\KiCad\10.0\scripting\plugins\kibridge\
 
 Restart KiCad's PCB Editor — the five `KiBridge:` buttons appear in the toolbar.
 
-**Manual:** copy `plugin/kibridge/` into your KiCad scripting/plugins folder. See [INSTALL.md](docs/INSTALL.md) for platform paths.
+**Manual:** copy `plugin/kibridge/` into your KiCad scripting/plugins folder.
 
 ### 2. Start KiRouter
 
